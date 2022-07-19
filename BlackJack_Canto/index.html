@@ -1,0 +1,146 @@
+<!--  All HTML files begin with the following line: -->
+<!DOCTYPE html>
+<!-- This indicates that the rest of the lines that follow are to be interpreted as HTML. It tells the browser about what document type to expect. -->
+
+<!-- All text enclosed in angled brackets are known as HTML element tags. There are usually, but not always, starting and closing element "tags", each representing a HTML element.
+The <html> element is known as the root element of a HTML page. All other elements are encased within it. -->
+<html>
+  <!-- The <head> element contains meta information about the HTML page, information that is not rendered or displayed by the browser -->
+  <head>
+    <!-- The <title> element specifies a title for the HTML page (which is shown in the browser's title bar or in the page's tab) and is the default name given to a bookmark of a webpage. -->
+    <title>Basics</title>
+    <!-- The <style> element contains information relating to the layout and style of the webpage. The syntax within a <style> tag is referred to as CSS - Cascading Style Sheets. -->
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: sans-serif;
+        margin-left: 30px;
+        margin-right: 30px;
+      }
+      .hidden {
+        display: none;
+      }
+      .show {
+        display: inline;
+      }
+      #header {
+        text-align: center;
+      }
+
+      #container {
+        background-color: rgb(22, 147, 68);
+        margin: 40px auto;
+        max-width: 800px;
+        padding: 38px 31px;
+      }
+
+      input {
+        font-size: 21px;
+        line-height: 33px;
+        margin: 0 0 23px 0;
+        padding: 0 9px;
+        width: 100%;
+      }
+
+      button {
+        font-size: 21px;
+        line-height: 33px;
+        margin: 0 0 23px 0;
+        padding: 0 6px;
+      }
+
+      #output-div {
+        background-color: rgb(92, 204, 133);
+        margin: 20px auto;
+        padding: 20px;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <!-- The <body> element defines the document's body, and is a container for all the visible contents that will be rendered by the browser.  -->
+  <body>
+    <!-- The <h1> element defines a large heading. There are 6 pre-set header elements, <h1> to <h6> -->
+    <h1 id="header">♠ ♥️ Hello! Shimizu-Shi 🍡 Black Jack! ♦️ ♣️</h1>
+    <!-- The <div> tag defines a division or a section in an HTML document, and is commonly use as a "container" for nested HTML elements. -->
+    <div id="container">
+      <!-- The <p> tag defines a paragraph element. -->
+      <p>
+        請係以下空格內輸入賭註金額(額度需介於 10 至 100 之間).
+        <br />注意事項：<br />
+        如若一方抽得 Black Jack 21 點，則另一方會輸掉賭註金額嘅 2 倍。
+        <br /><br />Input:
+      </p>
+      <!-- The self-closing <input /> tag represents a field for a user to enter input. -->
+      <input id="input-field" />
+      <!-- The self-closing <br /> tag represents a line break - a line's worth of spacing before dispalying the next element. -->
+      <br />
+      <!-- The <button> tag represents.. you guessed it! a button. -->
+      <button id="submit-button" onclick="submitButton()">開始</button>
+      <button id="hit-button" class="hidden" onclick="hitButton()">抽卡</button>
+      <button id="stand-button" class="hidden" onclick="standButton()">
+        唔抽
+      </button>
+      <button id="refresh-button" class="hidden" onclick="refreshButton()">
+        結束
+      </button>
+      <p>Output:</p>
+      <div id="output-div">歡迎來到清水市娛樂城，請點擊“開始”鍵開始遊戲！</div>
+    </div>
+    <!-- Everything below this is incorporating JavaScript programming logic into the webpage. -->
+    <!-- The script tag encloses JavaScript syntax for the browser to interpret programtically -->
+    <!-- The following line imports all code written in the script.js file -->
+    <script src="script.js"></script>
+    <!-- Define button click functionality -->
+    <script>
+      function hitButton() {
+        // Store the output of main() in a new variable
+        var result = playerDraw();
+
+        // Display result in output element
+        var output = document.querySelector("#output-div");
+
+        output.innerHTML = result;
+      }
+
+      function standButton() {
+        // Store the output of main() in a new variable
+        var result = showResults();
+
+        // Display result in output element
+        var output = document.querySelector("#output-div");
+
+        output.innerHTML = result;
+      }
+
+      function submitButton() {
+        // Set result to input value
+        var input = document.querySelector("#input-field");
+        // Store the output of main() in a new variable
+        var result = main(input.value);
+
+        // Display result in output element
+        var output = document.querySelector("#output-div");
+
+        output.innerHTML = result;
+      }
+
+      function refreshButton() {
+        // Store the output of main() in a new variable
+        var result = refreshPage();
+
+        var inputValue = document.getElementById("input-field");
+
+        inputValue.value = "";
+
+        // Display result in output element
+        var output = document.querySelector("#output-div");
+
+        output.innerHTML = result;
+      }
+    </script>
+  </body>
+</html>
