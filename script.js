@@ -464,7 +464,7 @@ var refreshPage = function () {
     myOutputValue =
       myOutputValue + "<br><br>" + playerImage + " " + dealerImage;
   } else {
-    var myOutputValue = `歡迎來到清水市賭場，請點擊“開始”鍵開始遊戲！`;
+    var myOutputValue = `歡迎來到清水市娛樂城，請點擊“開始”鍵開始遊戲！`;
   }
 
   if (shuffledDeck.length < 10) {
